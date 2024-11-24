@@ -46,16 +46,28 @@
             </form>
         </div>
         <div id="step-2" class="step-pane" style="display: none;">
-            <h2>Quantity</h2>
-            <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
+            <h2 class="title-step">Quantity</h2>
+            <div class="col-md-6">
+                <label for="quantity" class="form-label">Quantity<sup>required</sup></label>
+                <input type="text" id="quantity" class="form-control" required>
+                <div id="quantity-feedback" class="invalid-feedback"></div>
+                <div id="quantity-valid-feedback" class="valid-feedback"></div>
+            </div>
+            <button type="button" class="btn btn-primary" id="nextStep2">Continue</button>
         </div>
         <div id="step-3" class="step-pane" style="display: none;">
-            <h2>Price</h2>
-            <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
+            <h2 class="title-step">Price</h2>
+            <span id="price"></span>
+            <div class="row d-flex align-items-center">
+                <button type="button" class="btn btn-primary w-25" id="nextStep3">Send to Email</button>
+                <button type="button" class="btn  btn-light w-25" id="prevStep3">← Back</button>
+            </div>
         </div>
         <div id="step-4" class="step-pane" style="display: none;">
-            <h2>Done</h2>
-            <p>You are finished!</p>
+            <h2 class="title-step">Done</h2>
+            <p>✅ Your email was send successfully</p>
+            <p>⚠️ We cannot send you email right now. Use alternative way to contact us</p>
+            <button type="button" class="btn btn-primary" id="nextStep3">Start again</button>
         </div>
     </div>
 </div>
