@@ -1,0 +1,8 @@
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    <FilesMatch "\.(jpg|jpeg|png|gif|svg)$">
+        Order Allow,Deny
+        Allow from all
+    </FilesMatch>
+</IfModule>
