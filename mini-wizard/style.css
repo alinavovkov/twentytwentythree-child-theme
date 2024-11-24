@@ -79,11 +79,9 @@
 }
 
 .btn-primary {
-    width: 96px;
     height: 44px;
     top: 579px;
     left: 207px;
-    padding: 12px 16px 12px 16px;
     gap: 8px;
     border-radius: 6px;
     opacity: 0px;
@@ -133,4 +131,21 @@ sup {
     line-height: 144px;
     margin-bottom: 40px;
     letter-spacing: -2.14px;
+}
+
+#startAgain {
+    margin-top: 157px !important;
+}
+
+.card-details {
+    margin-top: 54px;
+    margin-left: 80px;
+    margin-bottom: 80px;
+}
+
+.card-title,
+.card-text {
+    color: #4B5563;
+    font-family: Inter;
+    text-transform: none;
 }

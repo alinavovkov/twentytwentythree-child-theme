@@ -1,4 +1,5 @@
 
+
 function validateName(name) {
     const regex = /^[A-Za-z\s]+$/;
     return regex.test(name);
@@ -43,7 +44,7 @@ function calculatePrice(quantity) {
     if (quantity >= 1 && quantity <= 10) {
         price = 10;
     } else if (quantity >= 11 && quantity <= 100) {
-        price = 10;
+        price = 100;
     } else if (quantity >= 101 && quantity <= 1000) {
         price = 1000;
     }
@@ -122,14 +123,84 @@ document.getElementById('prevStep3').addEventListener('click', function () {
 });
 
 document.getElementById('nextStep3').addEventListener('click', function () {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const quantity = document.getElementById('quantity').value;
+    const price = calculatePrice(quantity);
+    if (!validateName(name) || !validateEmail(email) || !validatePhone(phone) || !validateQuantity(quantity)) {
+        alert("Please fill out the form correctly!");
+        return;
+    }
 
+    const data = {
+        name: name,
+        email: email,
+        phone: phone,
+        quantity: quantity,
+    };
 
+    const statusAlertSuccess = document.querySelector(".statusSuccess");
+    const statusAlertFailed = document.querySelector(".statusFailed");
+
+    statusAlertSuccess.style.display = "none";
+    statusAlertFailed.style.display = "none";
+    fetch('http://localhost:3001/add-order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, phone, quantity })
+    })
+        .then(response => response.text())
+        .then(data => {
+
+            statusAlertSuccess.style.display = "block";
+            statusAlertFailed.style.display = "none";
+
+        })
+        .catch((error) => {
+            let statusAlertSuccess = this.getElementsByClassName("statusSuccess");
+            let statusAlertFailed = this.getElementsByClassName("statusSuccess");
+
+            statusAlertFailed.style.display = "block";
+            statusAlertSuccess.style.display = "none";
+
+        });
     document.getElementById('step-3').classList.remove('active');
     document.getElementById('step-4').classList.add('active');
     document.getElementById('step-3').style.display = 'none';
     document.getElementById('step-4').style.display = 'block';
     updateStepNavigation(4);
 });
+
+
+document.getElementById('startAgain').addEventListener('click', function () {
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('quantity').value = '';
+    const fields = ['name', 'email', 'phone', 'quantity'];
+    fields.forEach(function (fieldId) {
+        const field = document.getElementById(fieldId);
+        const feedback = document.getElementById(`${fieldId}-feedback`);
+        const validFeedback = document.getElementById(`${fieldId}-valid-feedback`);
+
+        field.classList.remove('is-valid', 'is-invalid');
+
+        feedback.style.display = 'none';
+        validFeedback.style.display = 'none';
+    });
+    document.getElementById('step-3').classList.remove('active');
+    document.getElementById('step-4').classList.remove('active');
+    document.getElementById('step-3').style.display = 'none';
+    document.getElementById('step-4').style.display = 'none';
+
+    document.getElementById('step-1').classList.add('active');
+    document.getElementById('step-1').style.display = 'block';
+    updateStepNavigation(1);
+});
+
 
 function updateStepNavigation(step) {
     for (let i = 1; i <= 4; i++) {
