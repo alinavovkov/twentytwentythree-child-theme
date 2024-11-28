@@ -81,37 +81,38 @@ document.getElementById('nextStep').addEventListener('click', function () {
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
 
-    if (!validateName(name)) {
-        return;
-    }
+    var isNameValid = validateName(name);
+    var isEmailValid = validateEmail(email);
+    var isPhoneValid = validatePhone(phone);
 
-    if (!validateEmail(email)) {
-        return;
-    }
+    updateFieldValidation('name', isNameValid, 'name-feedback', 'name-valid-feedback');
+    updateFieldValidation('email', isEmailValid, 'email-feedback', 'email-valid-feedback');
+    updateFieldValidation('phone', isPhoneValid, 'phone-feedback', 'phone-valid-feedback');
 
-    if (!validatePhone(phone)) {
-        return;
+    if (isNameValid && isEmailValid && isPhoneValid) {
+        document.getElementById('step-1').classList.remove('active');
+        document.getElementById('step-2').classList.add('active');
+        document.getElementById('step-1').style.display = 'none';
+        document.getElementById('step-2').style.display = 'block';
+        updateStepNavigation(2);
     }
-
-    document.getElementById('step-1').classList.remove('active');
-    document.getElementById('step-2').classList.add('active');
-    document.getElementById('step-1').style.display = 'none';
-    document.getElementById('step-2').style.display = 'block';
-    updateStepNavigation(2);
 });
 
 document.getElementById('nextStep2').addEventListener('click', function () {
     var quantity = document.getElementById('quantity').value;
-    if (!validateQuantity(quantity)) {
-        return;
+    var isQuantityValid = validateQuantity(quantity);
+
+    updateFieldValidation('quantity', isQuantityValid, 'quantity-feedback', 'quantity-valid-feedback');
+
+    if (isQuantityValid) {
+        const price = calculatePrice(quantity);
+        document.getElementById('price').innerHTML = `$${price}`;
+        document.getElementById('step-2').classList.remove('active');
+        document.getElementById('step-3').classList.add('active');
+        document.getElementById('step-2').style.display = 'none';
+        document.getElementById('step-3').style.display = 'block';
+        updateStepNavigation(3);
     }
-    const price = calculatePrice(quantity);
-    document.getElementById('price').innerHTML = `$${price}`;
-    document.getElementById('step-2').classList.remove('active');
-    document.getElementById('step-3').classList.add('active');
-    document.getElementById('step-2').style.display = 'none';
-    document.getElementById('step-3').style.display = 'block';
-    updateStepNavigation(3);
 });
 
 document.getElementById('prevStep3').addEventListener('click', function () {

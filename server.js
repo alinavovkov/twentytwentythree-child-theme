@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Сервер працює. Вітаємо!');
 });
 app.use((err, req, res, next) => {
-    console.error(err);  // Log the error
+    console.error(err); 
     res.status(500).send('Виникла помилка на сервері');
 });
 
@@ -48,7 +48,7 @@ app.post('/add-order', (req, res) => {
     const query = 'INSERT INTO test (name, email, phone, quantity) VALUES (?, ?, ?, ?)';
     pool.query(query, [name, email, phone, quantity], (err, results) => {
         if (err) {
-            console.error('Помилка при додаванні даних у базу:', err); // Логування помилки
+            console.error('Помилка при додаванні даних у базу:', err);
             return res.status(500).json({ error: 'Помилка сервера: не вдалося додати дані.' });
         }
 
