@@ -21,7 +21,7 @@ function mini_wizard_shortcode($atts, $content = null) {
             'title' => 'My Wizard',
         ),
         $atts,
-        'mini_wizard'
+        'r_test'
     );
 
     ob_start();
@@ -38,5 +38,5 @@ function mini_wizard_shortcode($atts, $content = null) {
     <?php
     return ob_get_clean();
 }
-add_shortcode('mini_wizard', 'mini_wizard_shortcode');
+add_shortcode('r_test', 'r_test_shortcode');
 
