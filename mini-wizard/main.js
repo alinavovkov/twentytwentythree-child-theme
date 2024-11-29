@@ -93,9 +93,16 @@ document.getElementById('nextStep').addEventListener('click', function () {
         document.getElementById('step-1').classList.remove('active');
         document.getElementById('step-2').classList.add('active');
         document.getElementById('step-1').style.display = 'none';
-        document.getElementById('step-2').style.display = 'block';
+        document.getElementById('step-2').style.display = 'flex';
         updateStepNavigation(2);
     }
+});
+document.getElementById('prevStep2').addEventListener('click', function () {
+    document.getElementById('step-2').classList.remove('active');
+    document.getElementById('step-1').classList.add('active');
+    document.getElementById('step-2').style.display = 'none';
+    document.getElementById('step-1').style.display = 'flex';
+    updateStepNavigation(1);
 });
 
 document.getElementById('nextStep2').addEventListener('click', function () {
@@ -110,7 +117,7 @@ document.getElementById('nextStep2').addEventListener('click', function () {
         document.getElementById('step-2').classList.remove('active');
         document.getElementById('step-3').classList.add('active');
         document.getElementById('step-2').style.display = 'none';
-        document.getElementById('step-3').style.display = 'block';
+        document.getElementById('step-3').style.display = 'flex';
         updateStepNavigation(3);
     }
 });
@@ -119,7 +126,7 @@ document.getElementById('prevStep3').addEventListener('click', function () {
     document.getElementById('step-3').classList.remove('active');
     document.getElementById('step-2').classList.add('active');
     document.getElementById('step-3').style.display = 'none';
-    document.getElementById('step-2').style.display = 'block';
+    document.getElementById('step-2').style.display = 'flex';
     updateStepNavigation(2);
 });
 
@@ -171,7 +178,7 @@ document.getElementById('nextStep3').addEventListener('click', function () {
     document.getElementById('step-3').classList.remove('active');
     document.getElementById('step-4').classList.add('active');
     document.getElementById('step-3').style.display = 'none';
-    document.getElementById('step-4').style.display = 'block';
+    document.getElementById('step-4').style.display = 'flex';
     updateStepNavigation(4);
 });
 
@@ -198,7 +205,7 @@ document.getElementById('startAgain').addEventListener('click', function () {
     document.getElementById('step-4').style.display = 'none';
 
     document.getElementById('step-1').classList.add('active');
-    document.getElementById('step-1').style.display = 'block';
+    document.getElementById('step-1').style.display = 'flex';
     updateStepNavigation(1);
 });
 

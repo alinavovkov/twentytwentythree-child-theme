@@ -1,4 +1,4 @@
-<div class="container-fluid container">
+<div class="container">
     <ul class="steps-nav">
         <li class="steps-button-home">
             <img src="images/home.png" alt="home button">
@@ -41,7 +41,6 @@
                     <div id="phone-feedback" class="invalid-feedback"></div>
                     <div id="phone-valid-feedback" class="valid-feedback"></div>
                 </div>
-
                 <button type="button" class="btn btn-primary" id="nextStep">Continue</button>
             </form>
         </div>
@@ -53,12 +52,15 @@
                 <div id="quantity-feedback" class="invalid-feedback"></div>
                 <div id="quantity-valid-feedback" class="valid-feedback"></div>
             </div>
-            <button type="button" class="btn btn-primary" id="nextStep2">Continue</button>
+            <div class="row row-second">
+                <button type="button" class="btn btn-primary w-25" id="nextStep2">Continue</button>
+                <button type="button" class="btn  btn-light w-25" id="prevStep2">← Back</button>
+            </div>
         </div>
         <div id="step-3" class="step-pane" style="display: none;">
             <h2 class="title-step">Price</h2>
             <span id="price"></span>
-            <div class="row d-flex align-items-center">
+            <div class="row row-third">
                 <button type="button" class="btn btn-primary w-25" id="nextStep3">Send to Email</button>
                 <button type="button" class="btn  btn-light w-25" id="prevStep3">← Back</button>
             </div>
